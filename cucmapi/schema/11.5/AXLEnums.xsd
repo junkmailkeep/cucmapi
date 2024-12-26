@@ -769,6 +769,7 @@
 			<xsd:enumeration value="VG-3VWIC-MBRD"/>
 			<xsd:enumeration value="ISR-2NIM-MBRD"/>
 			<xsd:enumeration value="SM-X-NIM-ADPTR"/>
+			<xsd:enumeration value="VG-1NIM-MBRD"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XMGCPVic">
@@ -922,6 +923,24 @@
 			<xsd:enumeration value="NIM-4FXS-SCCP"/>
 			<xsd:enumeration value="NIM-4BRI-NT/TE-SCCP"/>
 			<xsd:enumeration value="NIM-2FXS/4FXO-SCCP"/>
+			<xsd:enumeration value="SM-X-16FXS/2FXO"/>
+			<xsd:enumeration value="SM-X-24FXS/4FXO"/>
+			<xsd:enumeration value="SM-X-8FXS/12FXO"/>
+			<xsd:enumeration value="SM-X-72FXS"/>
+			<xsd:enumeration value="SM-X-56FXS"/>
+			<xsd:enumeration value="SM-X-72FXS-SCCP"/>
+			<xsd:enumeration value="SM-X-56FXS-SCCP"/>
+			<xsd:enumeration value="SM-X-16FXS/2FXO-SCCP"/>
+			<xsd:enumeration value="SM-X-24FXS/4FXO-SCCP"/>
+			<xsd:enumeration value="SM-X-8FXS/12FXO-SCCP"/>
+			<xsd:enumeration value="VG-8FXS"/>
+			<xsd:enumeration value="VG-2FXS/2FXO"/>
+			<xsd:enumeration value="VG-4FXS/4FXO"/>
+			<xsd:enumeration value="VG-6FXS/6FXO"/>
+			<xsd:enumeration value="VG-8FXS-SCCP"/>
+			<xsd:enumeration value="VG-2FXS/2FXO-SCCP"/>
+			<xsd:enumeration value="VG-4FXS/4FXO-SCCP"/>
+			<xsd:enumeration value="VG-6FXS/6FXO-SCCP"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XMWLPolicy">
@@ -1158,6 +1177,36 @@
 			<xsd:enumeration value="Cisco TelePresence MX800 Dual"/>
 			<xsd:enumeration value="Cisco 8851NR"/>
 			<xsd:enumeration value="Cisco Spark Remote Device"/>
+			<xsd:enumeration value="Cisco Webex DX80"/>
+			<xsd:enumeration value="Cisco TelePresence DX70"/>
+			<xsd:enumeration value="Cisco 7832"/>
+			<xsd:enumeration value="Cisco 8865NR"/>
+			<xsd:enumeration value="Cisco Meeting Server"/>
+			<xsd:enumeration value="Cisco Webex Room Kit"/>
+			<xsd:enumeration value="Cisco Webex Room 55"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Plus"/>
+			<xsd:enumeration value="CP-8800-Video 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="CP-8800-Audio 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="Cisco 8832"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Single"/>
+			<xsd:enumeration value="Cisco 8832NR"/>
+			<xsd:enumeration value="Cisco ATA 191"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Dual"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Pro"/>
+			<xsd:enumeration value="Cisco Webex Room 55 Dual"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Single G2"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Dual G2"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Mini"/>
+			<xsd:enumeration value="Cisco Webex Board 55"/>
+			<xsd:enumeration value="Cisco Webex Board 70"/>
+			<xsd:enumeration value="Cisco Webex Board 85"/>
+			<xsd:enumeration value="Cisco Webex Desk Pro"/>
+			<xsd:enumeration value="Cisco Webex Room Panorama"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Panorama"/>
+			<xsd:enumeration value="Cisco Webex Room Phone"/>
+			<xsd:enumeration value="Cisco 860"/>
+			<xsd:enumeration value="Cisco 840"/>
+			<xsd:enumeration value="Cisco Webex Desk LE"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XMonthOfYear">
@@ -1699,6 +1748,39 @@
 			<xsd:enumeration value="Cisco TelePresence MX800 Dual"/>
 			<xsd:enumeration value="Cisco 8851NR"/>
 			<xsd:enumeration value="Cisco Spark Remote Device"/>
+			<xsd:enumeration value="Cisco Webex DX80"/>
+			<xsd:enumeration value="Cisco TelePresence DX70"/>
+			<xsd:enumeration value="Cisco 7832"/>
+			<xsd:enumeration value="Cisco 8865NR"/>
+			<xsd:enumeration value="Cisco Meeting Server"/>
+			<xsd:enumeration value="Cisco Webex Room Kit"/>
+			<xsd:enumeration value="Cisco Webex Room 55"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Plus"/>
+			<xsd:enumeration value="CP-8800-Audio 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="CP-8800-Video 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="Cisco 8832"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Single"/>
+			<xsd:enumeration value="Cisco 8832NR"/>
+			<xsd:enumeration value="Cisco ATA 191"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Dual"/>
+			<xsd:enumeration value="VG450"/>
+			<xsd:enumeration value="Cisco ISR 4461"/>
+			<xsd:enumeration value="VG400"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Pro"/>
+			<xsd:enumeration value="Cisco Webex Room 55 Dual"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Single G2"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Dual G2"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Mini"/>
+			<xsd:enumeration value="Cisco Webex Board 55"/>
+			<xsd:enumeration value="Cisco Webex Board 70"/>
+			<xsd:enumeration value="Cisco Webex Board 85"/>
+			<xsd:enumeration value="Cisco Webex Desk Pro"/>
+			<xsd:enumeration value="Cisco Webex Room Panorama"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Panorama"/>
+			<xsd:enumeration value="Cisco Webex Room Phone"/>
+			<xsd:enumeration value="Cisco 860"/>
+			<xsd:enumeration value="Cisco 840"/>
+			<xsd:enumeration value="Cisco Webex Desk LE"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XProtocolSide">
@@ -1742,6 +1824,7 @@
 			<xsd:enumeration value="Reset"/>
 			<xsd:enumeration value="Restart"/>
 			<xsd:enumeration value="Apply Configuration"/>
+			<xsd:enumeration value="Generate PRT"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XRevertPriority">
@@ -1945,6 +2028,10 @@
 			<xsd:enumeration value="Cisco XCP File Transfer Manager"/>
 			<xsd:enumeration value="Cisco Certificate Change Notification Service"/>
 			<xsd:enumeration value="Cisco Wireless Controller Synchronization Service"/>
+			<xsd:enumeration value="Cisco Upgrade Agent Service"/>
+			<xsd:enumeration value="Cisco Management Agent Service"/>
+			<xsd:enumeration value="Cisco Push Notification Service"/>
+			<xsd:enumeration value="Cisco Headset Service"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XServiceGrouping">
@@ -1963,6 +2050,7 @@
 			<xsd:enumeration value="Platform Services"/>
 			<xsd:enumeration value="IM and Presence Services"/>
 			<xsd:enumeration value="Location based Tracking Services"/>
+			<xsd:enumeration value="Cloud based Management Services"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	<xsd:simpleType name="XSilenceSuppressionThreshold">

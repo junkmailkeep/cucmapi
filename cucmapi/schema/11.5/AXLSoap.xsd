@@ -7384,6 +7384,24 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
                     <xsd:documentation>If zeroHop value is false pin will be synchronized with UCxN, if synchronization is enabled for Unity Connection server and if zeroHop is true pin will not be synchronized with UCxN. This tage is supported only for updateUser api</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="associatedHeadsets">
+                <xsd:annotation>
+                    <xsd:documentation>Contains headset that are associated to user.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="axlapi:XCommonMembersExtension">
+                            <xsd:sequence minOccurs="0">
+                                <xsd:element maxOccurs="15" minOccurs="0" name="headset" type="axlapi:String50">
+                                    <xsd:annotation>
+                                        <xsd:documentation>Name of headset.</xsd:documentation>
+                                    </xsd:annotation>
+                                </xsd:element>
+                            </xsd:sequence>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:element name="addUser" type="axlapi:AddUserReq"/>
@@ -7686,6 +7704,58 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
                             <xsd:documentation>If zeroHop value is false pin will be synchronized with UCxN, if synchronization is enabled for Unity Connection server and if zeroHop is true pin will not be synchronized with UCxN. This tage is supported only for updateUser api</xsd:documentation>
                         </xsd:annotation>
                     </xsd:element>
+                    <xsd:choice minOccurs="0">
+                        <xsd:sequence minOccurs="0">
+                            <xsd:element maxOccurs="1" minOccurs="0" name="removeAssociatedHeadsets">
+                                <xsd:complexType>
+                                    <xsd:complexContent>
+                                        <xsd:extension base="axlapi:XCommonMembersExtension">
+                                            <xsd:sequence minOccurs="0">
+                                                <xsd:element maxOccurs="15" minOccurs="0" name="headset" type="axlapi:String50">
+                                                    <xsd:annotation>
+                                                        <xsd:documentation>Name of headset.</xsd:documentation>
+                                                    </xsd:annotation>
+                                                </xsd:element>
+                                            </xsd:sequence>
+                                        </xsd:extension>
+                                    </xsd:complexContent>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element maxOccurs="1" minOccurs="0" name="addAssociatedHeadsets">
+                                <xsd:complexType>
+                                    <xsd:complexContent>
+                                        <xsd:extension base="axlapi:XCommonMembersExtension">
+                                            <xsd:sequence minOccurs="0">
+                                                <xsd:element maxOccurs="15" minOccurs="0" name="headset" type="axlapi:String50">
+                                                    <xsd:annotation>
+                                                        <xsd:documentation>Name of headset.</xsd:documentation>
+                                                    </xsd:annotation>
+                                                </xsd:element>
+                                            </xsd:sequence>
+                                        </xsd:extension>
+                                    </xsd:complexContent>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="associatedHeadsets">
+                            <xsd:annotation>
+                                <xsd:documentation>Contains headset that are associated to user.</xsd:documentation>
+                            </xsd:annotation>
+                            <xsd:complexType>
+                                <xsd:complexContent>
+                                    <xsd:extension base="axlapi:XCommonMembersExtension">
+                                        <xsd:sequence minOccurs="0">
+                                            <xsd:element maxOccurs="15" minOccurs="0" name="headset" type="axlapi:String50">
+                                                <xsd:annotation>
+                                                    <xsd:documentation>Name of headset.</xsd:documentation>
+                                                </xsd:annotation>
+                                            </xsd:element>
+                                        </xsd:sequence>
+                                    </xsd:extension>
+                                </xsd:complexContent>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:choice>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>
@@ -17363,6 +17433,9 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
                 </xsd:annotation>
             </xsd:element>
             <xsd:element maxOccurs="1" minOccurs="0" name="ringSchedule">
+                <xsd:annotation>
+                    <xsd:documentation>This tag must be used for configuring RingSchedule of RD, this tag will get precendence over todaccess and accesslist tag. Passing a blank ringSchedule tag in updateRemoteDestination request will result in setting the time schedule to All the time.</xsd:documentation>
+                </xsd:annotation>
                 <xsd:complexType>
                     <xsd:complexContent>
                         <xsd:extension base="axlapi:XCommonMembersExtension">
@@ -17494,6 +17567,9 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
                             </xsd:element>
                         </xsd:sequence>
                         <xsd:element maxOccurs="1" minOccurs="0" name="ringSchedule">
+                            <xsd:annotation>
+                                <xsd:documentation>This tag must be used for configuring RingSchedule of RD, this tag will get precendence over todaccess and accesslist tag. Passing a blank ringSchedule tag in updateRemoteDestination request will result in setting the time schedule to All the time.</xsd:documentation>
+                            </xsd:annotation>
                             <xsd:complexType>
                                 <xsd:complexContent>
                                     <xsd:extension base="axlapi:XCommonMembersExtension">
@@ -27209,6 +27285,7 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
             <xsd:element maxOccurs="1" minOccurs="0" name="universalLineTemplate" nillable="false" type="axlapi:XFkType"/>
             <xsd:element default="false" maxOccurs="1" minOccurs="0" name="allowProvision" nillable="false" type="axlapi:boolean"/>
             <xsd:element default="10" maxOccurs="1" minOccurs="0" name="limitProvision" nillable="false" type="axlapi:XInteger"/>
+            <xsd:element default="false" maxOccurs="1" minOccurs="0" name="allowPhoneReassign" nillable="false" type="axlapi:boolean"/>
             <xsd:element maxOccurs="1" minOccurs="0" name="defaultUserProfile" nillable="false" type="axlapi:XFkType"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -27243,6 +27320,7 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
                     <xsd:element maxOccurs="1" minOccurs="0" name="universalLineTemplate" nillable="false" type="axlapi:XFkType"/>
                     <xsd:element default="false" maxOccurs="1" minOccurs="0" name="allowProvision" nillable="false" type="axlapi:boolean"/>
                     <xsd:element default="10" maxOccurs="1" minOccurs="0" name="limitProvision" nillable="false" type="axlapi:XInteger"/>
+                    <xsd:element default="false" maxOccurs="1" minOccurs="0" name="allowPhoneReassign" nillable="false" type="axlapi:boolean"/>
                     <xsd:element maxOccurs="1" minOccurs="0" name="defaultUserProfile" nillable="false" type="axlapi:XFkType"/>
                 </xsd:sequence>
             </xsd:extension>
@@ -34210,6 +34288,7 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
             <xsd:element maxOccurs="1" minOccurs="0" name="description" type="axlapi:String255"/>
             <xsd:element maxOccurs="1" minOccurs="0" name="allowProvision" type="axlapi:boolean"/>
             <xsd:element maxOccurs="1" minOccurs="0" name="limitProvision" type="axlapi:XInteger"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="allowPhoneReassign" type="axlapi:boolean"/>
             <xsd:element maxOccurs="1" minOccurs="0" name="defaultUserProfile" type="axlapi:XFkType"/>
         </xsd:sequence>
         <xsd:attribute name="uuid" type="axlapi:XUUID"/>
@@ -37748,6 +37827,20 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
                     <xsd:documentation>If zeroHop value is false pin will be synchronized with UCxN, if synchronization is enabled for Unity Connection server and if zeroHop is true pin will not be synchronized with UCxN. This tage is supported only for updateUser api</xsd:documentation>
                 </xsd:annotation>
             </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="associatedHeadsets">
+                <xsd:annotation>
+                    <xsd:documentation>Contains headset that are associated to user.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexType>
+                    <xsd:sequence minOccurs="0">
+                        <xsd:element maxOccurs="15" minOccurs="0" name="headset" type="axlapi:String50">
+                            <xsd:annotation>
+                                <xsd:documentation>Name of headset.</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
         </xsd:sequence>
         <xsd:attribute name="uuid" type="axlapi:XUUID"/>
     </xsd:complexType>
@@ -40659,6 +40752,9 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
                 </xsd:annotation>
             </xsd:element>
             <xsd:element maxOccurs="1" minOccurs="0" name="ringSchedule">
+                <xsd:annotation>
+                    <xsd:documentation>This tag must be used for configuring RingSchedule of RD, this tag will get precendence over todaccess and accesslist tag. Passing a blank ringSchedule tag in updateRemoteDestination request will result in setting the time schedule to All the time.</xsd:documentation>
+                </xsd:annotation>
                 <xsd:complexType>
                     <xsd:sequence minOccurs="0">
                         <xsd:element maxOccurs="7" minOccurs="0" name="member" type="axlapi:RRingingSchedule"/>
@@ -42677,6 +42773,7 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
             <xsd:element maxOccurs="1" minOccurs="0" name="universalLineTemplate" type="axlapi:XFkType"/>
             <xsd:element maxOccurs="1" minOccurs="0" name="allowProvision" type="axlapi:boolean"/>
             <xsd:element maxOccurs="1" minOccurs="0" name="limitProvision" type="axlapi:XInteger"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="allowPhoneReassign" type="axlapi:boolean"/>
             <xsd:element maxOccurs="1" minOccurs="0" name="defaultUserProfile" type="axlapi:XFkType"/>
         </xsd:sequence>
         <xsd:attribute name="uuid" type="axlapi:XUUID"/>
@@ -44036,34 +44133,118 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
             </xsd:extension>
         </xsd:complexContent>
     </xsd:complexType>
-    <xsd:complexType name="OXCallForwardNotRegisteredInt">
+    <xsd:complexType name="OXCallForwardNoAnswerInt">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="ORCallForwardNotRegisteredInt">
+    <xsd:complexType name="ORCallForwardNoAnswerInt">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="OXCallForwardNoCoverage">
+    <xsd:complexType name="OXCallForwardNoCoverageInt">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="ORCallForwardNoCoverage">
+    <xsd:complexType name="ORCallForwardNoCoverageInt">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="OXCallForwardBusyInt">
+    <xsd:complexType name="OXDirectoryUri">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="partition" type="axlapi:OXFkType"/>
+        </xsd:sequence>
+        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
+    </xsd:complexType>
+    <xsd:complexType name="ORDirectoryUri">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="partition" type="axlapi:ORFkType"/>
+        </xsd:sequence>
+        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
+    </xsd:complexType>
+    <xsd:complexType name="OXCallForwardNoAnswer">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="ORCallForwardBusyInt">
+    <xsd:complexType name="ORCallForwardNoAnswer">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OXCallForwardNotRegistered">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ORCallForwardNotRegistered">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OXDirn">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="routePartitionName" type="axlapi:OXFkType"/>
+        </xsd:sequence>
+        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
+    </xsd:complexType>
+    <xsd:complexType name="ORDirn">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="routePartitionName" type="axlapi:ORFkType"/>
+        </xsd:sequence>
+        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
+    </xsd:complexType>
+    <xsd:complexType name="OXEnduserMember">
+        <xsd:sequence minOccurs="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="OREnduserMember">
+        <xsd:sequence minOccurs="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="OXNumplanIdentifier">
+        <xsd:sequence minOccurs="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="ORNumplanIdentifier">
+        <xsd:sequence minOccurs="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="OXBLFDirectedCallPark">
+        <xsd:sequence minOccurs="0">
+            <xsd:choice minOccurs="0">
+                <xsd:element maxOccurs="1" minOccurs="0" name="directedCallParkId" type="axlapi:XUUID">
+                    <xsd:annotation>
+                        <xsd:documentation>Only the uuid attribute is read</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element maxOccurs="1" minOccurs="0" name="directedCallParkDnAndPartition">
+                    <xsd:complexType>
+                        <xsd:sequence minOccurs="0">
+                            <xsd:element maxOccurs="1" minOccurs="0" name="dnPattern" type="axlapi:String255"/>
+                            <xsd:element maxOccurs="1" minOccurs="0" name="routePartitionName" type="axlapi:OXFkType"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ORBLFDirectedCallPark">
+        <xsd:sequence minOccurs="0">
+            <xsd:choice minOccurs="0">
+                <xsd:element maxOccurs="1" minOccurs="0" name="directedCallParkId" type="axlapi:XUUID">
+                    <xsd:annotation>
+                        <xsd:documentation>Only the uuid attribute is read</xsd:documentation>
+                    </xsd:annotation>
+                </xsd:element>
+                <xsd:element maxOccurs="1" minOccurs="0" name="directedCallParkDnAndPartition">
+                    <xsd:complexType>
+                        <xsd:sequence minOccurs="0">
+                            <xsd:element maxOccurs="1" minOccurs="0" name="dnPattern" type="axlapi:String255"/>
+                            <xsd:element maxOccurs="1" minOccurs="0" name="routePartitionName" type="axlapi:ORFkType"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="OXPhoneLine">
@@ -44150,92 +44331,34 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
         <xsd:attribute name="ctiid" type="xsd:nonNegativeInteger"/>
         <xsd:attribute name="uuid" type="axlapi:XUUID"/>
     </xsd:complexType>
-    <xsd:complexType name="OXCallForwardNoCoverageInt">
+    <xsd:complexType name="OXSubscribedService">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="telecasterServiceName" type="axlapi:OXFkType"/>
+        </xsd:sequence>
+        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
+    </xsd:complexType>
+    <xsd:complexType name="ORSubscribedService">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="telecasterServiceName" type="axlapi:ORFkType"/>
+        </xsd:sequence>
+        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
+    </xsd:complexType>
+    <xsd:complexType name="OXCallForwardBusy">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="ORCallForwardNoCoverageInt">
+    <xsd:complexType name="ORCallForwardBusy">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="OXCallForwardNotRegistered">
+    <xsd:complexType name="OXCallForwardNoCoverage">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="ORCallForwardNotRegistered">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="OXCallForwardNoAnswerInt">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="ORCallForwardNoAnswerInt">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="OXEnduserMember">
-        <xsd:sequence minOccurs="0"/>
-    </xsd:complexType>
-    <xsd:complexType name="OREnduserMember">
-        <xsd:sequence minOccurs="0"/>
-    </xsd:complexType>
-    <xsd:complexType name="OXBLFDirectedCallPark">
-        <xsd:sequence minOccurs="0">
-            <xsd:choice minOccurs="0">
-                <xsd:element maxOccurs="1" minOccurs="0" name="directedCallParkId" type="axlapi:XUUID">
-                    <xsd:annotation>
-                        <xsd:documentation>Only the uuid attribute is read</xsd:documentation>
-                    </xsd:annotation>
-                </xsd:element>
-                <xsd:element maxOccurs="1" minOccurs="0" name="directedCallParkDnAndPartition">
-                    <xsd:complexType>
-                        <xsd:sequence minOccurs="0">
-                            <xsd:element maxOccurs="1" minOccurs="0" name="dnPattern" type="axlapi:String255"/>
-                            <xsd:element maxOccurs="1" minOccurs="0" name="routePartitionName" type="axlapi:OXFkType"/>
-                        </xsd:sequence>
-                    </xsd:complexType>
-                </xsd:element>
-            </xsd:choice>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="ORBLFDirectedCallPark">
-        <xsd:sequence minOccurs="0">
-            <xsd:choice minOccurs="0">
-                <xsd:element maxOccurs="1" minOccurs="0" name="directedCallParkId" type="axlapi:XUUID">
-                    <xsd:annotation>
-                        <xsd:documentation>Only the uuid attribute is read</xsd:documentation>
-                    </xsd:annotation>
-                </xsd:element>
-                <xsd:element maxOccurs="1" minOccurs="0" name="directedCallParkDnAndPartition">
-                    <xsd:complexType>
-                        <xsd:sequence minOccurs="0">
-                            <xsd:element maxOccurs="1" minOccurs="0" name="dnPattern" type="axlapi:String255"/>
-                            <xsd:element maxOccurs="1" minOccurs="0" name="routePartitionName" type="axlapi:ORFkType"/>
-                        </xsd:sequence>
-                    </xsd:complexType>
-                </xsd:element>
-            </xsd:choice>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="OXSpeeddial">
-        <xsd:sequence minOccurs="0"/>
-    </xsd:complexType>
-    <xsd:complexType name="ORSpeeddial">
-        <xsd:sequence minOccurs="0"/>
-    </xsd:complexType>
-    <xsd:complexType name="OXCallForwardNoAnswer">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="ORCallForwardNoAnswer">
+    <xsd:complexType name="ORCallForwardNoCoverage">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
         </xsd:sequence>
@@ -44250,6 +44373,22 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
         </xsd:sequence>
     </xsd:complexType>
+    <xsd:complexType name="OXCallForwardNotRegisteredInt">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ORCallForwardNotRegisteredInt">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OXSpeeddial">
+        <xsd:sequence minOccurs="0"/>
+    </xsd:complexType>
+    <xsd:complexType name="ORSpeeddial">
+        <xsd:sequence minOccurs="0"/>
+    </xsd:complexType>
     <xsd:complexType name="OXCallForwardOnFailure">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
@@ -44260,17 +44399,27 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
             <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="OXDirectoryUri">
+    <xsd:complexType name="OXCallForwardAll">
         <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="partition" type="axlapi:OXFkType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="secondaryCallingSearchSpaceName" type="axlapi:OXFkType"/>
         </xsd:sequence>
-        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
     </xsd:complexType>
-    <xsd:complexType name="ORDirectoryUri">
+    <xsd:complexType name="ORCallForwardAll">
         <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="partition" type="axlapi:ORFkType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="secondaryCallingSearchSpaceName" type="axlapi:ORFkType"/>
         </xsd:sequence>
-        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
+    </xsd:complexType>
+    <xsd:complexType name="OXCallForwardBusyInt">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ORCallForwardBusyInt">
+        <xsd:sequence minOccurs="0">
+            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
+        </xsd:sequence>
     </xsd:complexType>
     <xsd:complexType name="OXBusyLampField">
         <xsd:sequence minOccurs="0">
@@ -44300,18 +44449,6 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
             </xsd:choice>
         </xsd:sequence>
     </xsd:complexType>
-    <xsd:complexType name="OXCallForwardAll">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
-            <xsd:element maxOccurs="1" minOccurs="0" name="secondaryCallingSearchSpaceName" type="axlapi:OXFkType"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="ORCallForwardAll">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
-            <xsd:element maxOccurs="1" minOccurs="0" name="secondaryCallingSearchSpaceName" type="axlapi:ORFkType"/>
-        </xsd:sequence>
-    </xsd:complexType>
     <xsd:complexType name="OXAddOnModule">
         <xsd:sequence minOccurs="0">
             <xsd:element maxOccurs="1" minOccurs="0" name="model" type="axlapi:OXFkTypeProduct_Protocol">
@@ -44331,46 +44468,6 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
             </xsd:element>
         </xsd:sequence>
         <xsd:attribute name="uuid" type="axlapi:XUUID"/>
-    </xsd:complexType>
-    <xsd:complexType name="OXCallForwardBusy">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:OXFkType"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="ORCallForwardBusy">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="callingSearchSpaceName" type="axlapi:ORFkType"/>
-        </xsd:sequence>
-    </xsd:complexType>
-    <xsd:complexType name="OXDirn">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="routePartitionName" type="axlapi:OXFkType"/>
-        </xsd:sequence>
-        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
-    </xsd:complexType>
-    <xsd:complexType name="ORDirn">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="routePartitionName" type="axlapi:ORFkType"/>
-        </xsd:sequence>
-        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
-    </xsd:complexType>
-    <xsd:complexType name="OXSubscribedService">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="telecasterServiceName" type="axlapi:OXFkType"/>
-        </xsd:sequence>
-        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
-    </xsd:complexType>
-    <xsd:complexType name="ORSubscribedService">
-        <xsd:sequence minOccurs="0">
-            <xsd:element maxOccurs="1" minOccurs="0" name="telecasterServiceName" type="axlapi:ORFkType"/>
-        </xsd:sequence>
-        <xsd:attribute name="uuid" type="axlapi:XUUID"/>
-    </xsd:complexType>
-    <xsd:complexType name="OXNumplanIdentifier">
-        <xsd:sequence minOccurs="0"/>
-    </xsd:complexType>
-    <xsd:complexType name="ORNumplanIdentifier">
-        <xsd:sequence minOccurs="0"/>
     </xsd:complexType>
     <xsd:complexType name="RTODAccessMember">
         <xsd:sequence minOccurs="0">
@@ -51666,6 +51763,7 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
 			<xsd:enumeration value="VG-3VWIC-MBRD"/>
 			<xsd:enumeration value="ISR-2NIM-MBRD"/>
 			<xsd:enumeration value="SM-X-NIM-ADPTR"/>
+			<xsd:enumeration value="VG-1NIM-MBRD"/>
 		</xsd:restriction>
             </xsd:simpleType>
             <xsd:simpleType>
@@ -51826,6 +51924,24 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
 			<xsd:enumeration value="NIM-4FXS-SCCP"/>
 			<xsd:enumeration value="NIM-4BRI-NT/TE-SCCP"/>
 			<xsd:enumeration value="NIM-2FXS/4FXO-SCCP"/>
+			<xsd:enumeration value="SM-X-16FXS/2FXO"/>
+			<xsd:enumeration value="SM-X-24FXS/4FXO"/>
+			<xsd:enumeration value="SM-X-8FXS/12FXO"/>
+			<xsd:enumeration value="SM-X-72FXS"/>
+			<xsd:enumeration value="SM-X-56FXS"/>
+			<xsd:enumeration value="SM-X-72FXS-SCCP"/>
+			<xsd:enumeration value="SM-X-56FXS-SCCP"/>
+			<xsd:enumeration value="SM-X-16FXS/2FXO-SCCP"/>
+			<xsd:enumeration value="SM-X-24FXS/4FXO-SCCP"/>
+			<xsd:enumeration value="SM-X-8FXS/12FXO-SCCP"/>
+			<xsd:enumeration value="VG-8FXS"/>
+			<xsd:enumeration value="VG-2FXS/2FXO"/>
+			<xsd:enumeration value="VG-4FXS/4FXO"/>
+			<xsd:enumeration value="VG-6FXS/6FXO"/>
+			<xsd:enumeration value="VG-8FXS-SCCP"/>
+			<xsd:enumeration value="VG-2FXS/2FXO-SCCP"/>
+			<xsd:enumeration value="VG-4FXS/4FXO-SCCP"/>
+			<xsd:enumeration value="VG-6FXS/6FXO-SCCP"/>
 		</xsd:restriction>
             </xsd:simpleType>
             <xsd:simpleType>
@@ -52097,6 +52213,36 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
 			<xsd:enumeration value="Cisco TelePresence MX800 Dual"/>
 			<xsd:enumeration value="Cisco 8851NR"/>
 			<xsd:enumeration value="Cisco Spark Remote Device"/>
+			<xsd:enumeration value="Cisco Webex DX80"/>
+			<xsd:enumeration value="Cisco TelePresence DX70"/>
+			<xsd:enumeration value="Cisco 7832"/>
+			<xsd:enumeration value="Cisco 8865NR"/>
+			<xsd:enumeration value="Cisco Meeting Server"/>
+			<xsd:enumeration value="Cisco Webex Room Kit"/>
+			<xsd:enumeration value="Cisco Webex Room 55"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Plus"/>
+			<xsd:enumeration value="CP-8800-Video 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="CP-8800-Audio 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="Cisco 8832"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Single"/>
+			<xsd:enumeration value="Cisco 8832NR"/>
+			<xsd:enumeration value="Cisco ATA 191"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Dual"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Pro"/>
+			<xsd:enumeration value="Cisco Webex Room 55 Dual"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Single G2"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Dual G2"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Mini"/>
+			<xsd:enumeration value="Cisco Webex Board 55"/>
+			<xsd:enumeration value="Cisco Webex Board 70"/>
+			<xsd:enumeration value="Cisco Webex Board 85"/>
+			<xsd:enumeration value="Cisco Webex Desk Pro"/>
+			<xsd:enumeration value="Cisco Webex Room Panorama"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Panorama"/>
+			<xsd:enumeration value="Cisco Webex Room Phone"/>
+			<xsd:enumeration value="Cisco 860"/>
+			<xsd:enumeration value="Cisco 840"/>
+			<xsd:enumeration value="Cisco Webex Desk LE"/>
 		</xsd:restriction>
             </xsd:simpleType>
             <xsd:simpleType>
@@ -52820,6 +52966,39 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
 			<xsd:enumeration value="Cisco TelePresence MX800 Dual"/>
 			<xsd:enumeration value="Cisco 8851NR"/>
 			<xsd:enumeration value="Cisco Spark Remote Device"/>
+			<xsd:enumeration value="Cisco Webex DX80"/>
+			<xsd:enumeration value="Cisco TelePresence DX70"/>
+			<xsd:enumeration value="Cisco 7832"/>
+			<xsd:enumeration value="Cisco 8865NR"/>
+			<xsd:enumeration value="Cisco Meeting Server"/>
+			<xsd:enumeration value="Cisco Webex Room Kit"/>
+			<xsd:enumeration value="Cisco Webex Room 55"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Plus"/>
+			<xsd:enumeration value="CP-8800-Audio 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="CP-8800-Video 28-Button Key Expansion Module"/>
+			<xsd:enumeration value="Cisco 8832"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Single"/>
+			<xsd:enumeration value="Cisco 8832NR"/>
+			<xsd:enumeration value="Cisco ATA 191"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Dual"/>
+			<xsd:enumeration value="VG450"/>
+			<xsd:enumeration value="Cisco ISR 4461"/>
+			<xsd:enumeration value="VG400"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Pro"/>
+			<xsd:enumeration value="Cisco Webex Room 55 Dual"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Single G2"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Dual G2"/>
+			<xsd:enumeration value="Cisco Webex Room Kit Mini"/>
+			<xsd:enumeration value="Cisco Webex Board 55"/>
+			<xsd:enumeration value="Cisco Webex Board 70"/>
+			<xsd:enumeration value="Cisco Webex Board 85"/>
+			<xsd:enumeration value="Cisco Webex Desk Pro"/>
+			<xsd:enumeration value="Cisco Webex Room Panorama"/>
+			<xsd:enumeration value="Cisco Webex Room 70 Panorama"/>
+			<xsd:enumeration value="Cisco Webex Room Phone"/>
+			<xsd:enumeration value="Cisco 860"/>
+			<xsd:enumeration value="Cisco 840"/>
+			<xsd:enumeration value="Cisco Webex Desk LE"/>
 		</xsd:restriction>
             </xsd:simpleType>
             <xsd:simpleType>
@@ -52905,6 +53084,7 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
 			<xsd:enumeration value="Reset"/>
 			<xsd:enumeration value="Restart"/>
 			<xsd:enumeration value="Apply Configuration"/>
+			<xsd:enumeration value="Generate PRT"/>
 		</xsd:restriction>
             </xsd:simpleType>
             <xsd:simpleType>
@@ -53213,6 +53393,10 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
 			<xsd:enumeration value="Cisco XCP File Transfer Manager"/>
 			<xsd:enumeration value="Cisco Certificate Change Notification Service"/>
 			<xsd:enumeration value="Cisco Wireless Controller Synchronization Service"/>
+			<xsd:enumeration value="Cisco Upgrade Agent Service"/>
+			<xsd:enumeration value="Cisco Management Agent Service"/>
+			<xsd:enumeration value="Cisco Push Notification Service"/>
+			<xsd:enumeration value="Cisco Headset Service"/>
 		</xsd:restriction>
             </xsd:simpleType>
             <xsd:simpleType>
@@ -53238,6 +53422,7 @@ Copyright (c) 2006, 2013 Cisco Systems, Inc.
 			<xsd:enumeration value="Platform Services"/>
 			<xsd:enumeration value="IM and Presence Services"/>
 			<xsd:enumeration value="Location based Tracking Services"/>
+			<xsd:enumeration value="Cloud based Management Services"/>
 		</xsd:restriction>
             </xsd:simpleType>
             <xsd:simpleType>
